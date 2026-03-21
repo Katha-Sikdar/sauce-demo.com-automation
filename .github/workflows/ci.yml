@@ -10,6 +10,9 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -22,12 +25,13 @@ jobs:
           cache: maven
 
       - name: Run UI Tests with Maven
-        # Headless মোডে রান করার জন্য ডাইনামিক ব্রাউজার অপশন পাস করা হচ্ছে
-        run: mvn clean test -Dbrowser=chrome -Dcucumber.options="--tags @Positive or @Negative"
+
+        run: mvn clean test -Dbrowser=chrome
 
       - name: Upload Test Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cucumber-report
-          path: target/cucumber-reports/
+          name: automation-test-results
+
+          path: target/
