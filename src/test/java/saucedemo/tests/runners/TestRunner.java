@@ -1,4 +1,4 @@
-package com.saucedemo.tests.runners;
+package saucedemo.tests.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
