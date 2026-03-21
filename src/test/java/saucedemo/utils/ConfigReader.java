@@ -1,4 +1,4 @@
-package SauceDemo.utils;
+package saucedemo.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,12 +10,12 @@ public class ConfigReader {
     public ConfigReader() {
         try {
 
-            FileInputStream fis = new FileInputStream("src/main/resources/config/config.properties");
+            FileInputStream fis = new FileInputStream("src/test/resources/config/config.properties");
             properties = new Properties();
             properties.load(fis);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("Config.properties file not found at src/main/resources/config/");
+            throw new RuntimeException("Config.properties file not found at src/test/resources/config/");
         }
     }
 

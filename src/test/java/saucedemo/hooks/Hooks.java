@@ -1,7 +1,7 @@
-package SauceDemo.hooks;
+package saucedemo.hooks;
 
-import SauceDemo.base.WebDriverFactory;
-import SauceDemo.utils.ConfigReader;
+import saucedemo.base.WebDriverFactory;
+import saucedemo.utils.ConfigReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;

@@ -7,18 +7,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        features = "src/main/java/saucedemo/tests/features",
+        features = "src/test/java/saucedemo/tests/features",
 
         glue = {"saucedemo.tests.steps", "saucedemo.hooks"},
 
         tags = "@Positive or @Negative or @Session",
 
-        plugin = {
-                "pretty",
-                "html:target/cucumber-reports.html",
-                "json:target/cucumber.json",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-        },
+        plugin = {"pretty", "html:target/cucumber-report.html"},
 
         monochrome = true
 )

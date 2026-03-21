@@ -1,7 +1,7 @@
-package SauceDemo.tests.steps;
+package saucedemo.tests.steps;
 
-import SauceDemo.base.WebDriverFactory;
-import SauceDemo.pages.LoginPage;
+import saucedemo.base.WebDriverFactory;
+import saucedemo.pages.LoginPage;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.en.And;
@@ -25,7 +25,7 @@ public class LoginSteps {
 
     @When("I login using {string} credentials from json")
     public void LoginUsingCredentials(String userKey) throws IOException {
-        String filePath = System.getProperty("user.dir") + "/src/main/resources/fixtures/testdata.json";
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/fixtures/testdata.json";
         File jsonFile = new File(filePath);
 
         if (!jsonFile.exists()) {

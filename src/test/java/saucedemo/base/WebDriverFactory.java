@@ -1,6 +1,6 @@
-package SauceDemo.base;
+package saucedemo.base;
 
-import SauceDemo.utils.ConfigReader;
+import saucedemo.utils.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
