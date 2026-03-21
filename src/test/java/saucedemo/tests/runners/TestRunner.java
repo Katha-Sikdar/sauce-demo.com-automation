@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        features = "src/main/java/SauceDemo/tests/features",
+        features = "src/main/java/saucedemo/tests/features",
 
-        glue = {"SauceDemo.tests.steps", "SauceDemo.hooks"},
+        glue = {"saucedemo.tests.steps", "saucedemo.hooks"},
 
         tags = "@Positive or @Negative or @Session",
 

@@ -1,17 +1,12 @@
 name: Sauce Demo UI Automation CI
 
-on:
-  push:
-    branches: [ "main", "master" ]
-  pull_request:
-    branches: [ "main", "master" ]
+on: [push, pull_request]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Node.js 24 Force Enable
 
     steps:
       - name: Checkout Code
@@ -24,14 +19,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run UI Tests with Maven
+      - name: Run Tests
 
         run: mvn clean test -Dbrowser=chrome
 
-      - name: Upload Test Report
+      - name: Upload Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: automation-test-results
-
+          name: automation-report
           path: target/
