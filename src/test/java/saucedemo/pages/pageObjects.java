@@ -54,5 +54,25 @@ public class pageObjects {
         String xpath = "//div[@class='cart_item']//div[text()='" + itemName + "']";
         return By.xpath(xpath);
     }
+
+    // Checkout Buttons & Fields
+    public static final By checkoutBtn = By.xpath("//button[@id='checkout' or @data-test='checkout']");
+    public static final By firstNameField = By.xpath("//input[@id='first-name']");
+    public static final By lastNameField = By.xpath("//input[@id='last-name']");
+    public static final By postalCodeField = By.xpath("//input[@id='postal-code']");
+    public static final By continueBtn = By.xpath("//input[@id='continue']");
+    public static final By finishBtn = By.xpath("//button[@id='finish']");
+    public static final By errorMessage = By.xpath("//h3[@data-test='error']");
+
+    // Summary Labels
+    public static final By itemTotalLabel = By.xpath("//div[@class='summary_subtotal_label']");
+    public static final By taxLabel = By.xpath("//div[@class='summary_tax_label']");
+    public static final By totalLabel = By.xpath("//div[@class='summary_total_label' and contains(@class, 'total_label')]");
+    public static final By completeHeader = By.xpath("//h2[@class='complete-header']");
+
+    // Dynamic Locator for Cart/Inventory Items
+   // public static By getProductByName(String itemName) {
+       // return By.xpath("//div[text()='" + itemName + "']");
+
 }
 
