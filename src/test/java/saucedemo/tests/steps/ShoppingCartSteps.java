@@ -15,12 +15,8 @@ import java.util.List;
 public class ShoppingCartSteps {
     private WebDriver driver = Hooks.getDriver();
 
-//    private By cartBadge = By.className("shopping_cart_badge");
-//    private By cartLink = By.className("shopping_cart_link");
-//    private By cartItemName = By.className("inventory_item_name");
-
     @When("I add {string} to the cart")
-    public void addItemToCart(String itemName) {
+    public static void addItemToCart(String itemName) {
         ShoppingCartPage.productAddCartButton(itemName);
 
     }
@@ -28,6 +24,23 @@ public class ShoppingCartSteps {
     @Then("the cart badge should display {string}")
     public void verifyCartBadge(String count) {
         ShoppingCartPage.cartBadgeVerification(count);
+
+    }
+
+    @When("I add the following items to the cart:")
+    public void addMultipleItems(DataTable dataTable) {
+        ShoppingCartPage.MultipleItemsAddCartButton(dataTable);
+    }
+
+    @And("I navigate to the cart page")
+    public void navigateToCart() {
+        driver.findElement(pageObjects.shoppingCartLink).click();
+    }
+
+    @Then("I should see all {int} items in the cart list")
+    public void verifyItemsInCart(int expectedCount) {
+        ShoppingCartPage.cartVerificationInItem(expectedCount);
+
 
     }
 
