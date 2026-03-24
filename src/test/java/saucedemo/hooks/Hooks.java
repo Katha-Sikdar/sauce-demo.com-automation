@@ -10,7 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class Hooks {
-    private WebDriver driver;
+    private static WebDriver driver;
     private ConfigReader configReader;
 
     @Before
@@ -19,6 +19,10 @@ public class Hooks {
 
         driver = WebDriverFactory.initializeDriver();
         driver.get(configReader.getBaseUrl());
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
     @After
