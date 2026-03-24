@@ -27,17 +27,32 @@ public class pageObjects {
     public static final By cartBadge = By.xpath("//span[@data-test='shopping-cart-badge']");
     public static final By cartItemName = By.xpath("//div[@data-test='inventory-item-name']");
 
+    //Product Add to CART
     public static By getAddToCartBtnByItemName(String itemName) {
         String xpath = "//div[text()='" + itemName + "']/ancestor::div[@class='inventory_item']//button";
         return By.xpath(xpath);
     }
 
+    //Product Remove from CART
     public static By getRemoveBtnByItemName(String itemName) {
         String formattedName = itemName.toLowerCase().replace(" ", "-");
         String xpath = "//button[@data-test='remove-" + formattedName + "']";
         return By.xpath(xpath);
     }
 
+    //Product Details Page
+    public static By getProductByName(String itemName) {
+        String xpath = "//div[text()='" + itemName + "']";
+        return By.xpath(xpath);
 
+    }
+
+    // PageObjects.java
+    public static final By cartBadgeVerify = By.xpath("//span[@data-test='shopping-cart-badge']");
+
+    public static By getCartItemByName(String itemName) {
+        String xpath = "//div[@class='cart_item']//div[text()='" + itemName + "']";
+        return By.xpath(xpath);
+    }
 }
 
