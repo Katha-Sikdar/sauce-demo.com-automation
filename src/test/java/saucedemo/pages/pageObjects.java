@@ -69,6 +69,7 @@ public class pageObjects {
     public static final By taxLabel = By.xpath("//div[@class='summary_tax_label']");
     public static final By totalLabel = By.xpath("//div[@class='summary_total_label' and contains(@class, 'total_label')]");
     public static final By completeHeader = By.xpath("//h2[@class='complete-header']");
+    public static final By completeOrderBtn = By.xpath("//button[@id='finish' or @name='finish']");
 
     // Dynamic Locator for Cart/Inventory Items
    // public static By getProductByName(String itemName) {
