@@ -22,6 +22,15 @@ public class pageObjects {
     public static final By inventoryItemImg = By.xpath("//img[contains(@class, 'inventory_item_img')]");
     public static final By sortDropdown = By.xpath("//select[@data-test='product-sort-container']");
 
+    //Shopping Cart Page
+    public static final By shoppingCartLink = By.xpath("//a[@data-test='shopping-cart-link']");
+    public static final By cartBadge = By.xpath("//span[@data-test='shopping-cart-badge']");
+    public static final By cartItemName = By.xpath("//div[@data-test='inventory-item-name']");
+
+    public static By getAddToCartBtnByItemName(String itemName) {
+        String xpath = "//div[text()='" + itemName + "']/ancestor::div[@class='inventory_item']//button";
+        return By.xpath(xpath);
+    }
 
 
 }
