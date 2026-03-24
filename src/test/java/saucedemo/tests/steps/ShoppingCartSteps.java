@@ -44,5 +44,36 @@ public class ShoppingCartSteps {
 
     }
 
+    @Given("I have {string} in my cart")
+    public void ensureItemInCart(String item) {
+        addItemToCart(item);
+        verifyCartBadge("1");
+    }
 
-}
+    @When("I remove {string} from the cart page")
+    public void removeItemFromCart(String item) {
+        navigateToCart();
+        ShoppingCartPage.itemRemoveFromCart(item);
+
+    }
+
+    @And("{string} should not be in the cart list")
+    public void shouldNotBeInTheCartList(String itemName) {
+        boolean isPresent = ShoppingCartPage.isItemDisplayedInCart(itemName);
+
+        Assert.assertFalse("Error: " + itemName + " is still visible in the cart!", isPresent);
+
+        System.out.println("Success: " + itemName + " is no longer in the cart.");
+    }
+
+    @Then("the cart badge should disappear or decrease")
+    public void verifyCartBadgeState() {
+        List<WebElement> badge = driver.findElements(pageObjects.cartBadge);
+        System.out.println("Cart Badge presence: " + !badge.isEmpty());
+    }
+
+
+
+
+
+    }

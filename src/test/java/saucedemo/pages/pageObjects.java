@@ -32,6 +32,12 @@ public class pageObjects {
         return By.xpath(xpath);
     }
 
+    public static By getRemoveBtnByItemName(String itemName) {
+        String formattedName = itemName.toLowerCase().replace(" ", "-");
+        String xpath = "//button[@data-test='remove-" + formattedName + "']";
+        return By.xpath(xpath);
+    }
+
 
 }
 

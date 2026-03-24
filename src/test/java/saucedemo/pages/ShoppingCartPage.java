@@ -39,4 +39,21 @@ public class ShoppingCartPage {
         List<WebElement> items = driver.findElements(pageObjects.cartItemName);
         Assert.assertEquals("Cart item count mismatch!", expectedCount, items.size());
     }
+
+    public static void itemRemoveFromCart(String item) {
+       By removeCartBtn= pageObjects.getRemoveBtnByItemName(item);
+        driver.findElement(removeCartBtn).click();
+        System.out.println("Removed item from cart: " + item);
+     //String xpath = "//div[text()='" + item + "']/ancestor::div[@class='cart_item']//button";
+//        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public static boolean isItemDisplayedInCart(String itemName) {
+        // কার্ট পেজের আইটেম নেম গুলোর XPath
+        String xpath = "//div[@class='cart_item']//div[text()='" + itemName + "']";
+        List<WebElement> items = driver.findElements(By.xpath(xpath));
+
+        // যদি লিস্ট খালি হয় (size == 0), তার মানে আইটেমটি নেই
+        return !items.isEmpty();
+    }
 }
