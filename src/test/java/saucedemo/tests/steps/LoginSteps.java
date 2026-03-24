@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import saucedemo.utils.ConfigReader;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -18,6 +20,7 @@ public class LoginSteps {
     private WebDriver driver = WebDriverFactory.getDriver();
     private LoginPage loginPage = new LoginPage(driver);
     private ObjectMapper mapper = new ObjectMapper();
+    private ConfigReader config = new ConfigReader();
 
     @Given("I am on the Sauce Demo login page")
     public void iAmOnTheSauceDemoLoginPage() {
@@ -62,15 +65,21 @@ public class LoginSteps {
     @Then("I should be redirected back to the login page")
     public void verifyLoginPageRedirect() throws InterruptedException {
         Thread.sleep(1000);
+        String expectedUrl = config.getBaseUrl();
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertTrue("Logout failed! Still on: " + currentUrl,
-                currentUrl.equals("https://www.saucedemo.com/") || currentUrl.equals("https://www.saucedemo.com"));
+        Assert.assertEquals("Logout failed! User was not redirected.", expectedUrl, currentUrl);
+
     }
 
     @And("I should not be able to access the inventory page directly")
     public void verifySessionPersistence() {
-        driver.get("https://www.saucedemo.com/inventory.html");
-        Assert.assertTrue("Direct access should be denied!", loginPage.getErrorMessage().contains("You can only access"));
+        //String targetUrl = config.getInventoryUrl();
+        //driver.get(targetUrl);
+        String targetUrl = config.getBaseUrl() + "inventory.html";
+        driver.get(targetUrl);
+        String actualError = loginPage.getErrorMessage();
+        Assert.assertTrue("Direct access should be denied! Actual error: " + actualError,
+                actualError.contains("You can only access"));
     }
 
     @Then("I should see an error message {string}")

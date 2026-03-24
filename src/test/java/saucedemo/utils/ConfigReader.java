@@ -30,4 +30,8 @@ public class ConfigReader {
     public String getBrowser() {
         return properties.getProperty("browser");
     }
+
+    public String getInventoryUrl() {
+        return properties.getProperty("inventoryUrl");
+    }
 }
