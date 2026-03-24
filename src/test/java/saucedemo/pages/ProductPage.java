@@ -55,21 +55,4 @@ public class ProductPage {
     public List<WebElement> getAllProductImages() {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(inventoryItemImg));
     }
-
-    public boolean areAllProductDetailsVisible() {
-
-        List<WebElement> names = driver.findElements(inventoryItemName);
-        List<WebElement> prices = driver.findElements(inventoryItemPrice);
-
-        if (names.isEmpty() || prices.isEmpty()) {
-            return false;
-        }
-
-        for (int i = 0; i < names.size(); i++) {
-            if (!names.get(i).isDisplayed() || !prices.get(i).isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
-    }
 }
