@@ -5,15 +5,24 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import saucedemo.hooks.Hooks;
 import saucedemo.pages.CheckoutFlowPage;
 import saucedemo.pages.pageObjects;
 
+import java.time.Duration;
+
 
 public class CheckoutFlowSteps {
+    //private WebDriver driver;
     private WebDriver driver;
-    private CheckoutFlowPage checkoutPage = new CheckoutFlowPage(Hooks.getDriver());
+    private CheckoutFlowPage checkoutPage;
 
+    public CheckoutFlowSteps() {
+        this.driver = Hooks.getDriver();
+        this.checkoutPage = new CheckoutFlowPage(this.driver);
+    }
     @And("I click on the checkout button")
     public void goToCheckout() {
         Hooks.getDriver().findElement(pageObjects.checkoutBtn).click();
@@ -33,28 +42,29 @@ public class CheckoutFlowSteps {
         Assert.assertEquals("Summary Total Mismatch!", (subTotal + tax), actualTotal, 0.01);
     }
 
-    @Then("I should see the order success message {string}")
-    public void verifySuccess(String expectedMsg) {
-        Hooks.getDriver().findElement(pageObjects.finishBtn).click();
-        String actualMsg = Hooks.getDriver().findElement(pageObjects.completeHeader).getText();
-        Assert.assertEquals("Order not completed!", expectedMsg, actualMsg);
-    }
-
-//    @And("I finish the order")
-//    public void i_finish_the_order() {
-//        checkoutPage.clickFinish();
-//
-//        System.out.println("LOG: Order finished successfully.");
-//    }
-
     @And("I finish the order")
     public void clickFinish() {
-    WebElement finishButton = driver.findElement(pageObjects.finishBtn);
 
-    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", finishButton);
+        if (driver == null) driver = Hooks.getDriver();
 
-    try { Thread.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement finishButton = driver.findElement(pageObjects.finishBtn);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", finishButton);
+        wait.until(ExpectedConditions.elementToBeClickable(finishButton));
+        finishButton.click();
+        System.out.println("LOG: Scrolled and clicked Finish button successfully.");
+    }
 
-    finishButton.click();
-}
+    @Then("I should see the order success message {string}")
+    public void verifySuccess(String expectedMsg) {
+
+        if (driver == null) driver = Hooks.getDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(pageObjects.completeHeader));
+
+        String actualMsg = header.getText();
+        Assert.assertEquals("Order message mismatch!", expectedMsg, actualMsg);
+        System.out.println("Success! Order message verified: " + actualMsg);
+    }
+
 }
