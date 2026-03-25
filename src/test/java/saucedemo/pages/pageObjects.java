@@ -28,9 +28,9 @@ public class pageObjects {
     public static final By cartItemName = By.xpath("//div[@data-test='inventory-item-name']");
 
     //Product Add to CART
+
     public static By getAddToCartBtnByItemName(String itemName) {
-        String xpath = "//div[text()='" + itemName + "']/ancestor::div[@class='inventory_item']//button";
-        return By.xpath(xpath);
+        return By.xpath("//div[text()='" + itemName + "']/ancestor::div[@class='inventory_item']//button");
     }
 
     //Product Remove from CART
