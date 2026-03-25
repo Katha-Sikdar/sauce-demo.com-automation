@@ -2,13 +2,30 @@ package saucedemo.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CheckoutFlowPage {
-    private WebDriver driver;
+    private static WebDriver driver;
 
     public CheckoutFlowPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    public static String getLastNameFieldValue() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            if (driver.findElements(pageObjects.lastNameField).size() > 0) {
+                return driver.findElement(pageObjects.lastNameField).getAttribute("value");
+            } else {
+                return "FIELD_NOT_FOUND";
+            }
+        } catch (Exception e) {
+            return "ERROR_IN_FINDING";
+        }
+    }
+
 
     public void fillInformation(String fname, String lname, String zip) {
         driver.findElement(pageObjects.firstNameField).sendKeys(fname);
