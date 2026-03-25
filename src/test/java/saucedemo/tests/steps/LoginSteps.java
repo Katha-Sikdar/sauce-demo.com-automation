@@ -73,8 +73,7 @@ public class LoginSteps {
 
     @And("I should not be able to access the inventory page directly")
     public void verifySessionPersistence() {
-        //String targetUrl = config.getInventoryUrl();
-        //driver.get(targetUrl);
+
         String targetUrl = config.getBaseUrl() + "inventory.html";
         driver.get(targetUrl);
         String actualError = loginPage.getErrorMessage();
