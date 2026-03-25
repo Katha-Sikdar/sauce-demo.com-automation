@@ -71,6 +71,10 @@ public class pageObjects {
     public static final By completeHeader = By.xpath("//h2[@class='complete-header']");
     public static final By completeOrderBtn = By.xpath("//button[@id='finish' or @name='finish']");
 
+   //for performance resilience test
+    public static final By productTitle = By.xpath("//span[@class='title' and text()='Products']");
+
+
 
 }
 
