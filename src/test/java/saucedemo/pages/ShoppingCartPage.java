@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class ShoppingCartPage {
-    private WebDriver driver;
+    private static WebDriver driver;
     public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -41,13 +41,13 @@ public class ShoppingCartPage {
         Assert.assertEquals("Cart item count mismatch!", expectedCount, items.size());
     }
 
-    public void itemRemoveFromCart(String item) {
+    public static void itemRemoveFromCart(String item) {
         By removeCartBtn = pageObjects.getRemoveBtnByItemName(item);
         driver.findElement(removeCartBtn).click();
         System.out.println("LOG: Removed item from cart: " + item);
     }
 
-    public boolean isItemDisplayedInCart(String itemName) {
+    public static boolean isItemDisplayedInCart(String itemName) {
         pageObjects.getCartItemByName(itemName);
         List<WebElement> items = driver.findElements(pageObjects.getCartItemByName(itemName));
         return !items.isEmpty();

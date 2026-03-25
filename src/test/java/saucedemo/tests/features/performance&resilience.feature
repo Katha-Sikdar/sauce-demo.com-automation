@@ -16,15 +16,22 @@ Feature: SauceDemo Performance and Resilience Testing
     Then I should see that the last name field is still empty or shows an error
 
   @ErrorUser @SortingBug
-  Scenario: Verify error user sorting bug - Price Low to High
+  Scenario Outline: Verify error user sorting bug - Price Low to High
     Given I login using "error_user" credentials from json
-    When I sort products by "Price (low to high)"
+    And I select sort option "<sort_option>"
+    Then I verify the products are sorted by "<sort_type>"
     Then the products should NOT be sorted correctly by price
+
+    Examples:
+      | sort_option         | sort_type         |
+      | Price (low to high) | Price Low to High |
+      #| Price (high to low) | Price High to Low |
+
 
   @ErrorUser @RemovalBug
   Scenario: Verify error user cart removal bug
     Given I login using "error_user" credentials from json
-    And I add "Sauce Labs Backpack" to the cart
+    And I add "Sauce Labs Onesie" to the cart
     And I navigate to the cart page
-    When I click on the remove button for "Sauce Labs Backpack"
-    Then the item "Sauce Labs Backpack" should still be in the cart
+    When I click on the remove button for "Sauce Labs Onesie"
+    Then the item "Sauce Labs Onesie" should still be in the cart
