@@ -110,7 +110,7 @@ This is a robust, behavior-driven development (BDD) automation framework designe
 ## 5. Test Coverage Summary
 This automation suite provides comprehensive coverage for all critical user journeys required in the assessment, including functional, resilience, and mathematical validation.
   - What is Covered?
-      - AAuthentication: Valid/Invalid logins, locked-out users, and session security.
+      - Authentication: Valid/Invalid logins, locked-out users, and session security.
       - Product Catalog: Count validation, full sorting logic (A-Z, Z-A, Price), and problem_user image glitch detection (via src attribute check).
       - Shopping Cart: Multi-item management, badge updates, and state persistence across pages.
       - Checkout Flow: End-to-end purchase with mathematical validation of Tax ($8\%$) and Total Price.
@@ -153,18 +153,12 @@ The framework is configured to generate detailed graphical reports using **Allur
 
 ### **Current Execution Summary**
 
-| Metric | Details |
-
-| :--- | :--- |
-
-| **Total Test Scenarios** | 17 |
-
-| **Passed** | 17 |
-
-| **Failed** | 0 |
-
-| **Success Rate** | ✅ **100%** |
-
+| Metric | Details  |
+| :--- |:---------|
+| **Total Test Scenarios** | 17       |
+| **Passed** | 17       |
+| **Failed** | 0        |
+| **Success Rate** |  **100%**|
 | **Average Execution Time** | ~73 seconds |
 
 ### **How to View Detailed Reports Locally**
