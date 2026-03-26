@@ -36,7 +36,15 @@ public class ShoppingCartPage {
         }
     }
 
+//    public void cartVerificationInItem(int expectedCount) {
+//        List<WebElement> items = driver.findElements(pageObjects.cartItemName);
+//        Assert.assertEquals("Cart item count mismatch!", expectedCount, items.size());
+//    }
+
     public void cartVerificationInItem(int expectedCount) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        wait.until(ExpectedConditions.numberOfElementsToBe(pageObjects.cartItemName, expectedCount));
         List<WebElement> items = driver.findElements(pageObjects.cartItemName);
         Assert.assertEquals("Cart item count mismatch!", expectedCount, items.size());
     }
