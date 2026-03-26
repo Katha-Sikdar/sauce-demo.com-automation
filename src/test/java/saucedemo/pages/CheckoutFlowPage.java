@@ -2,6 +2,7 @@ package saucedemo.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -34,23 +35,14 @@ public class CheckoutFlowPage {
 //    }
 
     public void fillInformation(String fname, String lname, String zip) {
-        WebElement firstName = driver.findElement(pageObjects.firstNameField);
-        firstName.clear();
-        if (fname != null && !fname.isEmpty()) {
-            firstName.sendKeys(fname);
-        }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement firstNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(pageObjects.firstNameField));
 
-        WebElement lastName = driver.findElement(pageObjects.lastNameField);
-        lastName.clear();
-        if (lname != null && !lname.isEmpty()) {
-            lastName.sendKeys(lname);
-        }
+        firstNameField.clear();
+        firstNameField.sendKeys(fname);
 
-        WebElement postalCode = driver.findElement(pageObjects.postalCodeField);
-        postalCode.clear();
-        if (zip != null && !zip.isEmpty()) {
-            postalCode.sendKeys(zip);
-        }
+        driver.findElement(pageObjects.lastNameField).sendKeys(lname);
+        driver.findElement(pageObjects.postalCodeField).sendKeys(zip);
     }
 
     public void clickContinue() {

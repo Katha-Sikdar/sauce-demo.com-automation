@@ -59,6 +59,7 @@ This is a robust, behavior-driven development (BDD) automation framework designe
  - Steps to Run Locally:
    - Clone the Repository:
      -     git clone https://github.com/your-username/Sauce-Demo-Automation-Suites.git
+     -     cd Sauce-Demo-Automation-Suites
 
   - Install Dependencies:
      -     mvn clean install -DskipTests
@@ -98,13 +99,14 @@ This is a robust, behavior-driven development (BDD) automation framework designe
       - Click on the latest run to see the execution logs and step-by-step progress of the tests.
         
   - How to View Reports
-      - Allure Reports: After the pipeline execution, Allure results are processed. If configured with GitHub Pages, you can view the live report at: https://<your-username>.github.io/<repo-name>/
+      - Cucumber HTML Report: Once you download and extract the artifact, open `target/cucumber-report.html` in any browser. This contains step-by-step results and embedded failure screenshots.
+      - Allure Results: Detailed Allure results are also uploaded as part of the artifacts, allowing for advanced trend analysis and failure insights.
       - Artifacts: You can also download the test execution reports (HTML/XML) directly from the "Artifacts" section at the bottom of each GitHub Action run summary.
-      - Failures: If a test fails in the pipeline, a screenshot of the failure is automatically captured and attached to the build artifacts for debugging.
+      - Failure Analysis: For every failed test case, a high-resolution screenshot is automatically captured and embedded directly into the HTML report for faster debugging.
 
   - Pipeline Trigger Policy
-      - Push: Runs all tests on every push to the main branch.
-      - Pull Request: Runs a regression suite before merging any PR to ensure no breaking changes.
+      - Push: Automatically triggers the full test suite on every push to the `main` or `master` branch.
+      - Pull Request: Runs a comprehensive regression suite to ensure no breaking changes before merging.
    
         
 ## 5. Test Coverage Summary
@@ -171,11 +173,12 @@ The framework is configured to generate detailed graphical reports using **Allur
 
   - Cucumber HTML Report (Lightweight):
 
-    - A standard HTML report is automatically generated after running ```mvn clean test```. You can find it at: ```target/cucumber-reports/index.html```
+    - A standard HTML report is automatically generated after running ```mvn clean test```. 
+    - File Location: ```target/cucumber-report.html```
 
   - Here is a summary dashboard from the latest test execution showing 100% success rate across all critical features.
       
-![Cucumber Test Report Summary](<img width="1470" height="552" alt="Screenshot 2026-03-26 at 16 18 21" src="https://github.com/user-attachments/assets/0b5e5586-a818-44b9-addf-0cb84e588abd" />)
+<img width="1470" height="552" alt="Screenshot 2026-03-26 at 16 18 21" src="https://github.com/user-attachments/assets/0b5e5586-a818-44b9-addf-0cb84e588abd" />
 
 
       
