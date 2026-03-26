@@ -1,5 +1,6 @@
 package saucedemo.base;
 
+import org.openqa.selenium.Dimension;
 import saucedemo.utils.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -55,6 +56,7 @@ public class WebDriverFactory {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-infobars");
 
         if (System.getenv("GITHUB_ACTIONS") != null) {
             options.addArguments("--headless=new");
@@ -64,13 +66,20 @@ public class WebDriverFactory {
             options.addArguments("--window-size=1920,1080");
         }
 
-        return new ChromeDriver(options);
+        WebDriver chromeDriver = new ChromeDriver(options);
+
+        if (System.getenv("GITHUB_ACTIONS") != null) {
+            chromeDriver.manage().window().setSize(new Dimension(1920, 1080));
+        }
+
+        return chromeDriver;
     }
 
     private static void applyGlobalSettings() {
         if (driver != null) {
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         }
     }
 
