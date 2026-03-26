@@ -34,7 +34,7 @@ jobs:
         with:
           name: automation-test-results
           path: |
-            target/cucumber-reports/
+            target/cucumber-report.html
             target/allure-results/
             target/surefire-reports/
           retention-days: 5
