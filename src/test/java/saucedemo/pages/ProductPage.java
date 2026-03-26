@@ -54,17 +54,14 @@ public class ProductPage {
 
     public List<Double> getProductPrices() {
         try {
-            // ১. চেক করুন কোনো অ্যালার্ট আছে কি না, থাকলে সেটি একসেপ্ট (OK) করুন
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
             if (ExpectedConditions.alertIsPresent().apply(driver) != null) {
                 System.out.println("LOG: Alert found: " + driver.switchTo().alert().getText());
                 driver.switchTo().alert().accept();
             }
         } catch (Exception e) {
-            // অ্যালার্ট না থাকলে কোনো সমস্যা নেই, এগিয়ে যান
         }
 
-        // ২. এখন প্রাইসগুলো গেট করার চেষ্টা করুন
         List<WebElement> priceElements = driver.findElements(pageObjects.inventoryItemPrice);
         List<Double> prices = new ArrayList<>();
         for (WebElement element : priceElements) {

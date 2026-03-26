@@ -8,7 +8,6 @@ Feature: Product Catalog and Visual Validation
   Scenario: Verify product listing loads correctly
     When I login using "valid_user" credentials from json
     Then I verify product count is 6
-   # Then Verify all product names and prices are visible
 
   @Sorting @Functional @DataDriven
   Scenario Outline: Verify product sorting functionality

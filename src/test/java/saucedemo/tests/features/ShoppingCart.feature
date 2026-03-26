@@ -16,7 +16,7 @@ Feature: Cart and Inventory Management
       | Sauce Labs Bike Light    |
       | Sauce Labs Bolt T-Shirt  |
     And I navigate to the cart page
-    Then I should see all 3 items in the cart list
+    Then I should see all 6 items in the cart list
 
   @Sanity @Removal
   Scenario: Remove an item from the cart and verify cart state

@@ -1,4 +1,5 @@
 # SauceDemo Automation Suite
+![CI Status](https://github.com/Katha-Sikdar/sauce-demo.com-automation/actions/workflows/ci.yml/badge.svg)
 
 This is a robust, behavior-driven development (BDD) automation framework designed for the SauceDemo e-commerce platform. It focuses on end-to-end checkout flows, mathematical accuracy of order totals, and resilience against UI glitches and intentional bugs (Error User).
 
