@@ -27,10 +27,30 @@ public class CheckoutFlowPage {
     }
 
 
+//    public void fillInformation(String fname, String lname, String zip) {
+//        driver.findElement(pageObjects.firstNameField).sendKeys(fname);
+//        driver.findElement(pageObjects.lastNameField).sendKeys(lname);
+//        driver.findElement(pageObjects.postalCodeField).sendKeys(zip);
+//    }
+
     public void fillInformation(String fname, String lname, String zip) {
-        driver.findElement(pageObjects.firstNameField).sendKeys(fname);
-        driver.findElement(pageObjects.lastNameField).sendKeys(lname);
-        driver.findElement(pageObjects.postalCodeField).sendKeys(zip);
+        WebElement firstName = driver.findElement(pageObjects.firstNameField);
+        firstName.clear();
+        if (fname != null && !fname.isEmpty()) {
+            firstName.sendKeys(fname);
+        }
+
+        WebElement lastName = driver.findElement(pageObjects.lastNameField);
+        lastName.clear();
+        if (lname != null && !lname.isEmpty()) {
+            lastName.sendKeys(lname);
+        }
+
+        WebElement postalCode = driver.findElement(pageObjects.postalCodeField);
+        postalCode.clear();
+        if (zip != null && !zip.isEmpty()) {
+            postalCode.sendKeys(zip);
+        }
     }
 
     public void clickContinue() {
