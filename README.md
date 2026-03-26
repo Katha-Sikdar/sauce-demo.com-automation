@@ -147,4 +147,42 @@ To ensure high reliability and senior-grade coding standards, the following were
 - **Modular Page Objects:** Page classes are strictly separated into `Locators` and `Action Logic` to maximize code reusability.
 
 ---
+
+## 8. Test Execution Report
+The framework is configured to generate detailed graphical reports using **Allure** and **Cucumber HTML Reports** after every execution.
+
+### **Current Execution Summary**
+
+| Metric | Details |
+
+| :--- | :--- |
+
+| **Total Test Scenarios** | 17 |
+
+| **Passed** | 17 |
+
+| **Failed** | 0 |
+
+| **Success Rate** | ✅ **100%** |
+
+| **Average Execution Time** | ~73 seconds |
+
+### **How to View Detailed Reports Locally**
+
+  - Allure Report (Advanced Dashboard):**
+
+    To see a rich graphical dashboard with trend analysis and failure screenshots:
+
+     -      mvn allure:serve
+
+  - Cucumber HTML Report (Lightweight):
+
+    - A standard HTML report is automatically generated after running ```mvn clean test```. You can find it at: ```target/cucumber-reports/index.html```
+
+  - Here is a summary dashboard from the latest test execution showing 100% success rate across all critical features.
+      
+![Cucumber Test Report Summary](<img width="1470" height="552" alt="Screenshot 2026-03-26 at 16 18 21" src="https://github.com/user-attachments/assets/0b5e5586-a818-44b9-addf-0cb84e588abd" />)
+
+
+      
  
