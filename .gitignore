@@ -36,3 +36,17 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# --- Custom QA Automation Exclusions ---
+
+# Allure Results & Reports
+allure-results/
+allure-report/
+
+# Test Artifacts & Logs
+test-output/
+*.log
+
+# Cucumber Specific
+.cucumber/
+target/cucumber-reports/
