@@ -1,10 +1,10 @@
-@Checkout @Regression
+@Checkout @OrderFlow @Regression
 Feature: SauceDemo Checkout Flow
 
   Background:
     Given I login using "valid_user" credentials from json
 
-  @Positive @Success
+  @Positive @Success @Smoke @E2E
   Scenario: Complete a full purchase with valid details
     And I add "Sauce Labs Backpack" to the cart
     And I navigate to the cart page
@@ -14,7 +14,7 @@ Feature: SauceDemo Checkout Flow
     And I finish the order
     Then I should see the order success message "Thank you for your order!"
 
-  @Negative @Validation
+  @Negative @Validation @FormValidation
   Scenario Outline: Checkout blocked when required fields are missing
     And I add "Sauce Labs Backpack" to the cart
     And I navigate to the cart page
@@ -28,7 +28,7 @@ Feature: SauceDemo Checkout Flow
       | Jannatul  |          | 1200       | Last Name is required    |
       | Jannatul  | Katha    |            | Postal Code is required  |
 
-  @Mathematical @Summary
+  @Mathematical @Summary @Calculation @Critical
   Scenario: Verify order summary is mathematically correct with multiple items
     And I add "Sauce Labs Backpack" to the cart
     And I add "Sauce Labs Bike Light" to the cart
