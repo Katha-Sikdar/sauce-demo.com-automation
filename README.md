@@ -182,5 +182,11 @@ The framework is configured to generate detailed graphical reports using **Allur
 <img width="1470" height="552" alt="Screenshot 2026-03-26 at 16 18 21" src="https://github.com/user-attachments/assets/0b5e5586-a818-44b9-addf-0cb84e588abd" />
 
 
+---
+### Note for Recruiters
+This repository is a **technical assessment** submitted by **Jannatul Ferdous Katha** for the **Senior SQA Engineer** position. 
+
+If you have any questions regarding the framework architecture or the test cases, please feel free to reach out via [LinkedIn](www.linkedin.com/in/jannatul-ferdous-katha-036810148) or email: ferdouskatha@gmail.com.
+
       
  
