@@ -188,5 +188,7 @@ This repository is a **technical assessment** submitted by **Jannatul Ferdous Ka
 
 If you have any questions regarding the framework architecture or the test cases, please feel free to reach out via [LinkedIn](www.linkedin.com/in/jannatul-ferdous-katha-036810148) or email: ferdouskatha@gmail.com.
 
+### 📩 Let's Connect!
+Ready to discuss your project? [Book a 1:1 SQA & Security Strategy Call](https://calendly.com/ferdouskatha35/30min)
       
  
