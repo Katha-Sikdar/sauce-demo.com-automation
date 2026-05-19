@@ -187,7 +187,4 @@ The framework is configured to generate detailed graphical reports using **Allur
 This repository is a **technical assessment** submitted by **Jannatul Ferdous Katha** for the **Senior SQA Engineer** position. 
 
 
-### 📩 Let's Connect!
-Ready to discuss your project? [Book a 1:1 SQA & Security Strategy Call](https://calendly.com/ferdouskatha35/30min)
-      
  
